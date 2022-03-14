@@ -13,7 +13,7 @@ def test_liwc():
 
 def test_counter():
     text = """
-    Comunicação é algo muito importante, querida!
+    Ler histórias é um jeito de fortalecer vínculos com a criança, se divertindo e se emocionando junto com ela.
     """
     print(category_couter(nlp, liwc, text))
 
