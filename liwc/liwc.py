@@ -2,6 +2,7 @@ from typing import Dict, List, Tuple
 
 from liwc.trie import TrieMixin
 
+
 class LIWC(TrieMixin):
     """
     Reads a LIWC lexicon from a file in the .dic format, holding the lexicon and
@@ -9,6 +10,7 @@ class LIWC(TrieMixin):
     * `lexicon` is a dict mapping string patterns to lists of category names
     * `category_mapping` is a dictionary of category names (as strings) and values
     """
+
     def __init__(self, dic_filepath: str) -> None:
         lines = self._load_dic(dic_filepath)
         lines, category_mapping = self._parse_categories(lines)
@@ -20,7 +22,7 @@ class LIWC(TrieMixin):
         """
         Return a list with the categories of the given token.
         """
-        return self.search_trie(self.trie, token)        
+        return self.search_trie(self.trie, token)
 
     def _load_dic(self, dic_filepath) -> List[str]:
         lines = []
@@ -28,7 +30,7 @@ class LIWC(TrieMixin):
             for line in f.readlines():
                 lines.append(line.replace('\n', ''))
         return lines
-    
+
     def _parse_categories(self, lines: List[str]) -> Tuple[List[str], Dict[str, int]]:
         """
         Read (category_id, category_name) pairs from the categories section.
@@ -36,7 +38,7 @@ class LIWC(TrieMixin):
         This section is separated from the lexicon by a line consisting of a single "%".
         """
         category_mapping = {}
-    
+
         if lines[0] != '%':
             raise Exception("File doesn't match required structure")
         else:
@@ -47,7 +49,6 @@ class LIWC(TrieMixin):
             lines.pop(0)
         lines.pop(0)
         return lines, category_mapping
-
 
     def _parse_lexicon(self, lines: List[str], category_mapping: Dict[str, int]) -> Dict[str, List[str]]:
         """
@@ -64,5 +65,3 @@ class LIWC(TrieMixin):
                 for category_id in categories
             ]
         return lexicon
-    
-    
