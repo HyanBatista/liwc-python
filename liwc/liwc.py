@@ -1,4 +1,5 @@
 from typing import Dict, List, Tuple
+
 from liwc.trie import TrieMixin
 
 class LIWC(TrieMixin):
@@ -19,8 +20,7 @@ class LIWC(TrieMixin):
         """
         Return a list with the categories of the given token.
         """
-        return self.search_trie(self.trie, token)
-        
+        return self.search_trie(self.trie, token)        
 
     def _load_dic(self, dic_filepath) -> List[str]:
         lines = []
@@ -64,3 +64,5 @@ class LIWC(TrieMixin):
                 for category_id in categories
             ]
         return lexicon
+    
+    
