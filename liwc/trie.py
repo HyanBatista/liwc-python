@@ -1,4 +1,3 @@
-
 class TrieMixin:
 
     def build_trie(self, lexicon):

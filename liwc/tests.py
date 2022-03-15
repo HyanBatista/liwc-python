@@ -1,6 +1,6 @@
 import spacy
 
-from liwc.liwc import LIWC
+from liwc import LIWC
 from liwc.utils import category_couter
 
 

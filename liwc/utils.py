@@ -2,7 +2,7 @@ from collections import Counter
 
 from spacy.language import Language
 
-from liwc.liwc import LIWC
+from liwc import LIWC
 
 
 def category_couter(nlp: Language, liwc: LIWC, text: str) -> Counter:
